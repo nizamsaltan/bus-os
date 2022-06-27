@@ -1,0 +1,57 @@
+name: productivity_launcher
+description: A new Flutter project.
+
+# The following line prevents the package from being accidentally published to
+# pub.dev using `flutter pub publish`. This is preferred for private packages.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.17.3 <3.0.0"
+
+
+dependencies:
+  flutter:
+    sdk: flutter
+  intl: ^0.17.0
+  cupertino_icons: ^1.0.2
+  device_apps: ^2.2.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
+
+  fonts:
+   - family: UbuntuBold
+     fonts:
+       - asset: assets/fonts/Ubuntu-Bold.ttf
+   - family: UbuntuBoldItalic
+     fonts:
+       - asset: assets/fonts/Ubuntu-BoldItalic.ttf
+   - family: UbuntuItalic
+     fonts:
+       - asset: assets/fonts/Ubuntu-Italic.ttf
+   - family: UbuntuLight
+     fonts:
+       - asset: assets/fonts/Ubuntu-Light.ttf
+   - family: UbuntuLightItalic
+     fonts:
+       - asset: assets/fonts/Ubuntu-LightItalic.ttf
+   - family: UbuntuMedium
+     fonts:
+       - asset: assets/fonts/Ubuntu-Medium.ttf
+   - family: UbuntuMediumItalic
+     fonts:
+       - asset: assets/fonts/Ubuntu-MediumItalic.ttf
+   - family: UbuntuRegular
+     fonts:
+       - asset: assets/fonts/Ubuntu-Regular.ttf
