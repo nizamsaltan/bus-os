@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:device_apps/device_apps.dart';
 import 'package:productivity_launcher/home.dart';
-import 'package:productivity_launcher/utils/themes.dart';
 
 late List<Application> apps;
 
 void main() {
-  setTheme(darkTheme);
   runApp(const MyApp());
 }
 

@@ -5,11 +5,16 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:productivity_launcher/app/apps_events.dart';
-import 'package:productivity_launcher/app/apps_list.dart';
-import 'package:productivity_launcher/todo/todo.dart';
+import 'package:productivity_launcher/utils/colors.dart';
 import 'package:productivity_launcher/utils/text_sytles.dart';
-import 'package:productivity_launcher/utils/themes.dart';
+
+const taskFieldSnackBar = SnackBar(
+  content: Text('Task filed is empity'),
+);
+
+const removeTaskWarningSnackBar = SnackBar(
+  content: Text('To remove task, set checkboxes true'),
+);
 
 class HomePage extends StatefulWidget {
   final Duration updateDuration;
@@ -36,6 +41,8 @@ class _HomePageState extends State<HomePage> {
   late String todayName = dayFormat.format(dateTime);
   late String monthName = monthFormat.format(dateTime);
 
+  List<TodoItem> items = [];
+
   @override
   void initState() {
     super.initState();
@@ -52,33 +59,30 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: getBackground(
-        context: context,
-        child: PageView(
-          children: [
-            // HOME
-            SafeArea(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    topBar(),
-                    if (items.length == 0)
-                      addTodoButton(context)
-                    else
-                      todoPanel(context),
-                  ],
-                ),
-              ),
-            ),
-            const AppsListScreen(),
-            const AppsEventsScreen()
-          ],
+        body: Stack(
+      children: [
+        Container(color: backgroundColor),
+        /*
+        Image(
+          image: const AssetImage("assets/images/background_2.jpeg"),
+          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
+          fit: BoxFit.cover,
+        ), */ // DISABLE FOR SINGLE COLOR
+        SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  topBar(),
+                  if (items.length == 0) addTodoButton() else todoPanel(),
+                ]),
+          ),
         ),
-      ),
-    );
+      ],
+    ));
   }
 
   Widget topBar() {
@@ -101,19 +105,50 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget todoPanel(BuildContext context) {
+  // *** Todo Panel ***
+
+  Widget addTodoButton() {
+    return Container(
+      height: 50,
+      color: secondaryBackgroundColor,
+      child: TextButton(
+        onPressed: () {
+          showDialog(
+              context: context,
+              builder: (BuildContext context) =>
+                  addNewTaskPopupDialog(context));
+        },
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            const SizedBox(width: 5),
+            Icon(
+              CupertinoIcons.add_circled,
+              color: lowerTextStyle.color,
+            ),
+            Text(
+              '   Add new task',
+              style: standardTextStyle.copyWith(fontSize: 16),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget todoPanel() {
     return Container(
       height: 200,
       decoration: BoxDecoration(
           borderRadius: const BorderRadius.all(Radius.circular(10)),
           boxShadow: <BoxShadow>[
             BoxShadow(
-              color: currentTheme.shadowColor,
+              color: shadowColor,
               blurRadius: 5.0,
               offset: const Offset(0.0, 0.75),
             )
           ],
-          color: currentTheme.secondaryBackgroundColor),
+          color: secondaryBackgroundColor),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -176,7 +211,7 @@ class _HomePageState extends State<HomePage> {
                   flex: 1,
                   child: TextButton(
                     onPressed: () {
-                      deleteDoneTasks(context);
+                      deleteDoneTasks();
                     },
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -197,22 +232,76 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
-}
 
-Widget getBackground({required Widget child, required BuildContext context}) {
-  if (currentTheme.hasBackgroundImage) {
-    return Stack(
-      children: [
-        Image(
-          image: const AssetImage("assets/images/background_2.jpeg"),
-          height: MediaQuery.of(context).size.height,
-          width: MediaQuery.of(context).size.width,
-          fit: BoxFit.cover,
+  Widget addNewTaskPopupDialog(BuildContext context) {
+    Color primaryColor = const Color.fromARGB(255, 58, 58, 58);
+    final controller = TextEditingController();
+    return CupertinoAlertDialog(
+      title: Text(
+        'Add new task',
+        style: standardTextStyle.copyWith(
+          fontSize: 22,
+          color: primaryColor,
         ),
-        child,
+      ),
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          const SizedBox(height: 10),
+          CupertinoTextField(
+            controller: controller,
+            placeholder: 'New task',
+            style: standardTextStyle.copyWith(color: primaryColor),
+          ),
+        ],
+      ),
+      actions: <Widget>[
+        CupertinoButton(
+          onPressed: () {
+            if (controller.text != '') {
+              TodoItem item = TodoItem();
+              item.text = controller.text;
+              items.add(item);
+            } else {
+              ScaffoldMessenger.of(context).showSnackBar(taskFieldSnackBar);
+            }
+            Navigator.of(context).pop();
+          },
+          child: Text(
+            'Add',
+            style: standardTextStyle.copyWith(color: primaryColor),
+          ),
+        ),
+        CupertinoButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          child: Text(
+            'Close',
+            style: standardTextStyle.copyWith(color: primaryColor),
+          ),
+        ),
       ],
     );
-  } else {
-    return Container(color: currentTheme.backgroundColor, child: child);
   }
+
+  bool isDeletedDoneTask = false;
+  void deleteDoneTasks() {
+    isDeletedDoneTask = false;
+    for (int i = 0; i < items.length; i++) {
+      if (items[i].isChecked) {
+        items.remove(items[i]);
+        isDeletedDoneTask = true;
+      }
+    }
+    if (!isDeletedDoneTask) {
+      ScaffoldMessenger.of(context).showSnackBar(removeTaskWarningSnackBar);
+    }
+  }
+}
+
+class TodoItem {
+  late String text;
+  bool isChecked = false;
 }
