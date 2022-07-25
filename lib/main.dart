@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:device_apps/device_apps.dart';
-import 'package:productivity_launcher/home.dart';
-
-late List<Application> apps;
+import 'package:productivity_launcher/home_page/home.dart';
+import 'package:productivity_launcher/utils/themes.dart';
 
 void main() {
+  setTheme(darkTheme);
   runApp(const MyApp());
 }
 
@@ -18,7 +17,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: HomePage(),
     );

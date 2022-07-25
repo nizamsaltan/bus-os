@@ -2,13 +2,13 @@
 
 import 'package:flutter/material.dart';
 
-theme currentTheme = theme();
+appTheme currentTheme = appTheme();
 
-theme blackTheme = theme();
-theme whiteTheme = theme();
-theme darkTheme = theme();
+appTheme blackTheme = appTheme();
+appTheme whiteTheme = appTheme();
+appTheme darkTheme = appTheme();
 
-void setTheme(theme newTheme) {
+void setTheme(appTheme newTheme) {
   blackTheme.backgroundColor = Colors.black;
   blackTheme.secondaryBackgroundColor = const Color.fromARGB(255, 37, 37, 37);
   blackTheme.shadowColor = Colors.white24;
@@ -27,14 +27,16 @@ void setTheme(theme newTheme) {
   darkTheme.shadowColor = Colors.white24;
   darkTheme.textColor = Colors.white;
   darkTheme.hasBackgroundImage = true;
+  darkTheme.backgroundImagePath = 'assets/images/background_1.jpg';
 
   currentTheme = newTheme;
 }
 
-class theme {
+class appTheme {
   late Color backgroundColor;
   late Color secondaryBackgroundColor;
   late Color shadowColor;
   late Color textColor;
   bool hasBackgroundImage = false;
+  late String backgroundImagePath;
 }

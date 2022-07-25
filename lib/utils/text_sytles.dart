@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:productivity_launcher/utils/themes.dart';
 
-TextStyle headerTextStyle = const TextStyle(
+TextStyle headerTextStyle = TextStyle(
   fontFamily: 'UbuntuMedium',
   fontSize: 28,
-  color: Colors.white,
+  color: currentTheme.textColor,
 );
 
-TextStyle lowerTextStyle = const TextStyle(
+TextStyle lowerTextStyle = TextStyle(
   fontFamily: 'UbuntuLight',
   fontSize: 14,
-  color: Colors.white,
+  color: currentTheme.textColor,
 );
 
-TextStyle standardTextStyle = const TextStyle(
+TextStyle standardTextStyle = TextStyle(
   fontFamily: 'UbuntuRegular',
   fontSize: 18,
-  color: Colors.white,
+  color: currentTheme.textColor,
 );
