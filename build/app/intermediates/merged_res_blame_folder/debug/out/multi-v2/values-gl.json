@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/home/nizam/Documents/flutter_projects/productivity_launcher/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-gl/values-gl.xml",
+            "outputFile": "C:\\Users\\salta\\Documents\\_Projects\\Flutter\\productivity_launcher\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-gl\\values-gl.xml",
             "map": [
                 {
-                    "source": "/home/nizam/.gradle/caches/transforms-3/acbce933e4b464a5224ed377a62db1f5/transformed/core-1.6.0/res/values-gl/values-gl.xml",
+                    "source": "C:\\Users\\salta\\.gradle\\caches\\transforms-3\\acbce933e4b464a5224ed377a62db1f5\\transformed\\core-1.6.0\\res\\values-gl\\values-gl.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

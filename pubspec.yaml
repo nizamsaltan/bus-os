@@ -17,6 +17,8 @@ dependencies:
   intl: ^0.17.0
   cupertino_icons: ^1.0.2
   device_apps: ^2.2.0
+  getwidget: ^3.0.1
+  blurrycontainer: ^1.0.2
 
 dev_dependencies:
   flutter_test:
@@ -31,27 +33,12 @@ flutter:
     - assets/images/
 
   fonts:
-   - family: UbuntuBold
+   - family: DMSans-Bold
      fonts:
-       - asset: assets/fonts/Ubuntu-Bold.ttf
-   - family: UbuntuBoldItalic
+       - asset: assets/fonts/DMSans-Bold.ttf
+   - family: DMSans-Medium
      fonts:
-       - asset: assets/fonts/Ubuntu-BoldItalic.ttf
-   - family: UbuntuItalic
+       - asset: assets/fonts/DMSans-Medium.ttf
+   - family: DMSans-Regular
      fonts:
-       - asset: assets/fonts/Ubuntu-Italic.ttf
-   - family: UbuntuLight
-     fonts:
-       - asset: assets/fonts/Ubuntu-Light.ttf
-   - family: UbuntuLightItalic
-     fonts:
-       - asset: assets/fonts/Ubuntu-LightItalic.ttf
-   - family: UbuntuMedium
-     fonts:
-       - asset: assets/fonts/Ubuntu-Medium.ttf
-   - family: UbuntuMediumItalic
-     fonts:
-       - asset: assets/fonts/Ubuntu-MediumItalic.ttf
-   - family: UbuntuRegular
-     fonts:
-       - asset: assets/fonts/Ubuntu-Regular.ttf
+       - asset: assets/fonts/DMSans-Regular.ttf

@@ -1,0 +1,101 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.productivity_launcher"
+4    android:versionCode="1"
+5    android:versionName="1.0.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="19"
+8-->C:\Users\salta\Documents\_Projects\Flutter\productivity_launcher\android\app\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="31" />
+9-->C:\Users\salta\Documents\_Projects\Flutter\productivity_launcher\android\app\src\main\AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
+11-->C:\Users\salta\Documents\_Projects\Flutter\productivity_launcher\android\app\src\main\AndroidManifest.xml:36:5-77
+11-->C:\Users\salta\Documents\_Projects\Flutter\productivity_launcher\android\app\src\main\AndroidManifest.xml:36:22-74
+12    <uses-permission android:name="android.permission.REQUEST_DELETE_PACKAGES" />
+12-->C:\Users\salta\Documents\_Projects\Flutter\productivity_launcher\android\app\src\main\AndroidManifest.xml:37:5-82
+12-->C:\Users\salta\Documents\_Projects\Flutter\productivity_launcher\android\app\src\main\AndroidManifest.xml:37:22-79
+13
+14    <application
+15        android:name="android.app.Application"
+15-->C:\Users\salta\Documents\_Projects\Flutter\productivity_launcher\android\app\src\main\AndroidManifest.xml:5:9-42
+16        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+16-->[androidx.core:core:1.6.0] C:\Users\salta\.gradle\caches\transforms-3\acbce933e4b464a5224ed377a62db1f5\transformed\core-1.6.0\AndroidManifest.xml:24:18-86
+17        android:icon="@mipmap/ic_launcher"
+17-->C:\Users\salta\Documents\_Projects\Flutter\productivity_launcher\android\app\src\main\AndroidManifest.xml:6:9-43
+18        android:label="productivity_launcher" >
+18-->C:\Users\salta\Documents\_Projects\Flutter\productivity_launcher\android\app\src\main\AndroidManifest.xml:4:9-46
+19        <activity
+19-->C:\Users\salta\Documents\_Projects\Flutter\productivity_launcher\android\app\src\main\AndroidManifest.xml:7:9-29:20
+20            android:name="com.example.productivity_launcher.MainActivity"
+20-->C:\Users\salta\Documents\_Projects\Flutter\productivity_launcher\android\app\src\main\AndroidManifest.xml:8:13-41
+21            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+21-->C:\Users\salta\Documents\_Projects\Flutter\productivity_launcher\android\app\src\main\AndroidManifest.xml:12:13-163
+22            android:exported="true"
+22-->C:\Users\salta\Documents\_Projects\Flutter\productivity_launcher\android\app\src\main\AndroidManifest.xml:9:13-36
+23            android:hardwareAccelerated="true"
+23-->C:\Users\salta\Documents\_Projects\Flutter\productivity_launcher\android\app\src\main\AndroidManifest.xml:13:13-47
+24            android:launchMode="singleTop"
+24-->C:\Users\salta\Documents\_Projects\Flutter\productivity_launcher\android\app\src\main\AndroidManifest.xml:10:13-43
+25            android:theme="@style/LaunchTheme"
+25-->C:\Users\salta\Documents\_Projects\Flutter\productivity_launcher\android\app\src\main\AndroidManifest.xml:11:13-47
+26            android:windowSoftInputMode="adjustResize" >
+26-->C:\Users\salta\Documents\_Projects\Flutter\productivity_launcher\android\app\src\main\AndroidManifest.xml:14:13-55
+27
+28            <!--
+29                 Specifies an Android theme to apply to this Activity as soon as
+30                 the Android process has started. This theme is visible to the user
+31                 while the Flutter UI initializes. After that, this theme continues
+32                 to determine the Window background behind the Flutter UI.
+33            -->
+34            <meta-data
+34-->C:\Users\salta\Documents\_Projects\Flutter\productivity_launcher\android\app\src\main\AndroidManifest.xml:19:13-22:17
+35                android:name="io.flutter.embedding.android.NormalTheme"
+35-->C:\Users\salta\Documents\_Projects\Flutter\productivity_launcher\android\app\src\main\AndroidManifest.xml:20:15-70
+36                android:resource="@style/NormalTheme" />
+36-->C:\Users\salta\Documents\_Projects\Flutter\productivity_launcher\android\app\src\main\AndroidManifest.xml:21:15-52
+37
+38            <intent-filter>
+38-->C:\Users\salta\Documents\_Projects\Flutter\productivity_launcher\android\app\src\main\AndroidManifest.xml:23:13-28:29
+39                <action android:name="android.intent.action.MAIN" />
+39-->C:\Users\salta\Documents\_Projects\Flutter\productivity_launcher\android\app\src\main\AndroidManifest.xml:24:17-68
+39-->C:\Users\salta\Documents\_Projects\Flutter\productivity_launcher\android\app\src\main\AndroidManifest.xml:24:25-66
+40
+41                <category android:name="android.intent.category.HOME" />
+41-->C:\Users\salta\Documents\_Projects\Flutter\productivity_launcher\android\app\src\main\AndroidManifest.xml:25:17-73
+41-->C:\Users\salta\Documents\_Projects\Flutter\productivity_launcher\android\app\src\main\AndroidManifest.xml:25:27-70
+42                <category android:name="android.intent.category.DEFAULT" />
+42-->C:\Users\salta\Documents\_Projects\Flutter\productivity_launcher\android\app\src\main\AndroidManifest.xml:26:17-76
+42-->C:\Users\salta\Documents\_Projects\Flutter\productivity_launcher\android\app\src\main\AndroidManifest.xml:26:27-73
+43                <category android:name="android.intent.category.LAUNCHER" />
+43-->C:\Users\salta\Documents\_Projects\Flutter\productivity_launcher\android\app\src\main\AndroidManifest.xml:27:17-76
+43-->C:\Users\salta\Documents\_Projects\Flutter\productivity_launcher\android\app\src\main\AndroidManifest.xml:27:27-74
+44            </intent-filter>
+45        </activity>
+46        <!--
+47             Don't delete the meta-data below.
+48             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
+49        -->
+50        <meta-data
+50-->C:\Users\salta\Documents\_Projects\Flutter\productivity_launcher\android\app\src\main\AndroidManifest.xml:32:9-34:33
+51            android:name="flutterEmbedding"
+51-->C:\Users\salta\Documents\_Projects\Flutter\productivity_launcher\android\app\src\main\AndroidManifest.xml:33:13-44
+52            android:value="2" />
+52-->C:\Users\salta\Documents\_Projects\Flutter\productivity_launcher\android\app\src\main\AndroidManifest.xml:34:13-30
+53
+54        <uses-library
+54-->[androidx.window:window:1.0.0-beta04] C:\Users\salta\.gradle\caches\transforms-3\49bc944d29f70d45aa5add8e43e3247e\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:25:9-27:40
+55            android:name="androidx.window.extensions"
+55-->[androidx.window:window:1.0.0-beta04] C:\Users\salta\.gradle\caches\transforms-3\49bc944d29f70d45aa5add8e43e3247e\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:26:13-54
+56            android:required="false" />
+56-->[androidx.window:window:1.0.0-beta04] C:\Users\salta\.gradle\caches\transforms-3\49bc944d29f70d45aa5add8e43e3247e\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:27:13-37
+57        <uses-library
+57-->[androidx.window:window:1.0.0-beta04] C:\Users\salta\.gradle\caches\transforms-3\49bc944d29f70d45aa5add8e43e3247e\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:28:9-30:40
+58            android:name="androidx.window.sidecar"
+58-->[androidx.window:window:1.0.0-beta04] C:\Users\salta\.gradle\caches\transforms-3\49bc944d29f70d45aa5add8e43e3247e\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:29:13-51
+59            android:required="false" />
+59-->[androidx.window:window:1.0.0-beta04] C:\Users\salta\.gradle\caches\transforms-3\49bc944d29f70d45aa5add8e43e3247e\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:30:13-37
+60    </application>
+61
+62</manifest>
