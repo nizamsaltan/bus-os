@@ -3,17 +3,14 @@ import 'package:flutter/services.dart';
 import 'package:productivity_launcher/home_page/home.dart';
 import 'package:productivity_launcher/utils/themes.dart';
 
-// TODO: Drawboards is in progress
-// TODO: Change app page design and functionality
-// TODO: Change app loading screen
-
 void main() {
   setTheme(defaultTheme);
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     statusBarColor: Colors.transparent, // transparent status bar
-    systemNavigationBarColor: Colors.transparent,
+    systemNavigationBarColor: Colors.black,
     systemNavigationBarDividerColor: Colors.transparent,
   ));
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 

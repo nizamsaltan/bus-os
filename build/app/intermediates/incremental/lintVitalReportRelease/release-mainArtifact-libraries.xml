@@ -4,6 +4,19 @@
       jars="C:\Users\salta\Documents\_Projects\Flutter\productivity_launcher\build\app\intermediates\flutter\release\libs.jar"
       resolved="__local_aars__:C:\Users\salta\Documents\_Projects\Flutter\productivity_launcher\build\app\intermediates\flutter\release\libs.jar:unspecified"/>
   <library
+      name="C:\Users\salta\Documents\_Projects\Flutter\productivity_launcher\android@@:path_provider_android::release"
+      jars="C:\Users\salta\Documents\_Projects\Flutter\productivity_launcher\build\path_provider_android\.transforms\f4a2c1cf9e9c074a0d06231ee3865ccc\transformed\out\jars\classes.jar"
+      resolved="io.flutter.plugins.pathprovider:path_provider_android:unspecified"
+      folder="C:\Users\salta\Documents\_Projects\Flutter\productivity_launcher\build\path_provider_android\.transforms\f4a2c1cf9e9c074a0d06231ee3865ccc\transformed\out"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
       name="C:\Users\salta\Documents\_Projects\Flutter\productivity_launcher\android@@:device_apps::release"
       jars="C:\Users\salta\Documents\_Projects\Flutter\productivity_launcher\build\device_apps\.transforms\ee7fd42af5010ef85f1265d2e488f434\transformed\out\jars\classes.jar"
       resolved="fr.g123k.deviceapps:device_apps:unspecified"
@@ -301,4 +314,36 @@
       name="org.jetbrains.kotlin:kotlin-stdlib-common:1.6.10@jar"
       jars="C:\Users\salta\.gradle\caches\modules-2\files-2.1\org.jetbrains.kotlin\kotlin-stdlib-common\1.6.10\c118700e3a33c8a0d9adc920e9dec0831171925\kotlin-stdlib-common-1.6.10.jar"
       resolved="org.jetbrains.kotlin:kotlin-stdlib-common:1.6.10"/>
+  <library
+      name="com.google.guava:guava:28.1-android@jar"
+      jars="C:\Users\salta\.gradle\caches\modules-2\files-2.1\com.google.guava\guava\28.1-android\c2526f8fad32a65a6d7032dd8e9524eb276b108b\guava-28.1-android.jar"
+      resolved="com.google.guava:guava:28.1-android"/>
+  <library
+      name="com.google.guava:failureaccess:1.0.1@jar"
+      jars="C:\Users\salta\.gradle\caches\modules-2\files-2.1\com.google.guava\failureaccess\1.0.1\1dcf1de382a0bf95a3d8b0849546c88bac1292c9\failureaccess-1.0.1.jar"
+      resolved="com.google.guava:failureaccess:1.0.1"/>
+  <library
+      name="com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava@jar"
+      jars="C:\Users\salta\.gradle\caches\modules-2\files-2.1\com.google.guava\listenablefuture\9999.0-empty-to-avoid-conflict-with-guava\b421526c5f297295adef1c886e5246c39d4ac629\listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar"
+      resolved="com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava"/>
+  <library
+      name="com.google.code.findbugs:jsr305:3.0.2@jar"
+      jars="C:\Users\salta\.gradle\caches\modules-2\files-2.1\com.google.code.findbugs\jsr305\3.0.2\25ea2e8b0c338a877313bd4672d3fe056ea78f0d\jsr305-3.0.2.jar"
+      resolved="com.google.code.findbugs:jsr305:3.0.2"/>
+  <library
+      name="org.checkerframework:checker-compat-qual:2.5.5@jar"
+      jars="C:\Users\salta\.gradle\caches\modules-2\files-2.1\org.checkerframework\checker-compat-qual\2.5.5\435dc33e3019c9f019e15f01aa111de9d6b2b79c\checker-compat-qual-2.5.5.jar"
+      resolved="org.checkerframework:checker-compat-qual:2.5.5"/>
+  <library
+      name="com.google.errorprone:error_prone_annotations:2.3.2@jar"
+      jars="C:\Users\salta\.gradle\caches\modules-2\files-2.1\com.google.errorprone\error_prone_annotations\2.3.2\d1a0c5032570e0f64be6b4d9c90cdeb103129029\error_prone_annotations-2.3.2.jar"
+      resolved="com.google.errorprone:error_prone_annotations:2.3.2"/>
+  <library
+      name="com.google.j2objc:j2objc-annotations:1.3@jar"
+      jars="C:\Users\salta\.gradle\caches\modules-2\files-2.1\com.google.j2objc\j2objc-annotations\1.3\ba035118bc8bac37d7eff77700720999acd9986d\j2objc-annotations-1.3.jar"
+      resolved="com.google.j2objc:j2objc-annotations:1.3"/>
+  <library
+      name="org.codehaus.mojo:animal-sniffer-annotations:1.18@jar"
+      jars="C:\Users\salta\.gradle\caches\modules-2\files-2.1\org.codehaus.mojo\animal-sniffer-annotations\1.18\f7aa683ea79dc6681ee9fb95756c999acbb62f5d\animal-sniffer-annotations-1.18.jar"
+      resolved="org.codehaus.mojo:animal-sniffer-annotations:1.18"/>
 </libraries>

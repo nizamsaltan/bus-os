@@ -1,7 +1,5 @@
 // ignore_for_file: use_key_in_widget_constructors, unused_field, prefer_is_empty, must_be_immutable
 
-import 'dart:developer';
-
 import 'package:device_apps/device_apps.dart';
 import 'package:flutter/material.dart';
 import 'package:productivity_launcher/app/app.dart';
@@ -36,30 +34,22 @@ class _HomePageState extends State<HomePage> {
         } else {
           apps = data.data!;
           searchApps = apps;
-          // FIXME: Test
-          dockApps = <Application>[
-            apps[1],
-            apps[2],
-            apps[3],
-            apps[4],
-          ];
+          setDockAppsAtStart();
           return WillPopScope(
             onWillPop: () async {
               return false;
             },
             child: Scaffold(
+              resizeToAvoidBottomInset: false,
               body: GestureDetector(
                 onPanUpdate: (details) {
-                  if (details.delta.dy > 15) {
-                    log('down');
+                  if (details.delta.dy > 20) {
                     setState(() {
                       searchPanelOpacity = 1;
                       searchPanelTop = 0;
                       searchBarFocusNode.requestFocus();
                     });
-                  }
-                  if (details.delta.dy < -15) {
-                    log('Up');
+                  } else if (details.delta.dy < -20) {
                     setState(() {
                       searchPanelOpacity = 0;
                       searchPanelTop = -MediaQuery.of(context).size.height;
@@ -75,7 +65,9 @@ class _HomePageState extends State<HomePage> {
                       width: MediaQuery.of(context).size.width,
                       fit: BoxFit.fill,
                     ),
+
                     homePage(),
+                    // ! Search Panel
                     AnimatedPositioned(
                       duration: const Duration(milliseconds: 400),
                       top: searchPanelTop,

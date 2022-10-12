@@ -8,21 +8,6 @@ late List<Application> apps;
 late List<Application> searchApps;
 late List<Application> dockApps;
 
-void openApp(String path) {
-  // EXAMPLE: openApp('com.frandroid.app');
-  DeviceApps.openApp(path);
-}
-
-void openAppSettings(String path) {
-  // EXAMPLE: openAppSettings('com.frandroid.app');
-  DeviceApps.openAppSettings(path);
-}
-
-void uninstallApp(String path) {
-  // EXAMPLE: uninstallApp('com.frandroid.app');
-  DeviceApps.uninstallApp(path);
-}
-
 Widget getAppIcon(Application app) {
   if (app is ApplicationWithIcon) {
     return GFAvatar(

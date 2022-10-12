@@ -37,9 +37,11 @@ class _TopBarState extends State<TopBar> {
   }
 
   void setTime(Timer timer) {
-    setState(() {
-      dateTime = DateTime.now();
-    });
+    if (mounted) {
+      setState(() {
+        dateTime = DateTime.now();
+      });
+    }
   }
 
   @override
