@@ -1,18 +1,23 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/cupertino.dart';
-import 'package:productivity_launcher/utils/text_sytles.dart';
+import 'package:productivity_launcher/design/text_sytles.dart';
 
-// Main call widget
-Widget drawboards() {
-  return Column(
-    children: [
-      Drawboard(name: 'Social'),
-      Drawboard(name: 'Creativity'),
-      Drawboard(name: 'Productivitiy'),
-      Drawboard(name: 'Frequently'),
-    ],
-  );
+class Drawboards extends StatelessWidget {
+  const Drawboards({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Drawboard(name: 'Social'),
+        Drawboard(name: 'Creativity'),
+        Drawboard(name: 'Productivitiy'),
+        Drawboard(name: 'Frequently'),
+      ],
+    );
+  }
 }
 
 // Single drawboard piece
@@ -34,7 +39,8 @@ class _DrawboardState extends State<Drawboard> {
           onPressed: () {},
           padding: EdgeInsets.zero,
           pressedOpacity: .5,
-          child: Text(widget.name, style: headerTextStyle),
+          child:
+              Text(widget.name, style: headerTextStyle.copyWith(fontSize: 30)),
         ),
       ),
     );

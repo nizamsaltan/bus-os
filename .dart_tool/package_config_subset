@@ -6,10 +6,6 @@ async
 2.12
 file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/async-2.8.2/
 file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/async-2.8.2/lib/
-blurrycontainer
-2.12
-file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/blurrycontainer-1.0.2/
-file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/blurrycontainer-1.0.2/lib/
 boolean_selector
 2.12
 file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/boolean_selector-2.1.0/
@@ -58,6 +54,10 @@ flutter_lints
 2.17
 file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_lints-2.0.1/
 file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_lints-2.0.1/lib/
+font_awesome_flutter
+2.12
+file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/font_awesome_flutter-10.2.1/
+file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/font_awesome_flutter-10.2.1/lib/
 getwidget
 2.12
 file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/getwidget-3.0.1/
@@ -78,6 +78,10 @@ material_color_utilities
 2.13
 file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/material_color_utilities-0.1.4/
 file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/material_color_utilities-0.1.4/lib/
+math_expressions
+2.12
+file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/math_expressions-2.3.1/
+file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/math_expressions-2.3.1/lib/
 meta
 2.12
 file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/meta-1.7.0/

@@ -3,7 +3,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:productivity_launcher/utils/text_sytles.dart';
+import 'package:productivity_launcher/design/text_sytles.dart';
 
 class TopBar extends StatefulWidget {
   final Duration updateDuration;

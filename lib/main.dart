@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:productivity_launcher/home_page/home.dart';
-import 'package:productivity_launcher/utils/themes.dart';
+import 'package:productivity_launcher/design/themes.dart';
+import 'package:productivity_launcher/panels/home.dart';
 
 void main() {
   setTheme(defaultTheme);

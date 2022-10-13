@@ -1,15 +1,15 @@
 import 'dart:developer';
 import 'dart:io';
 
-import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:device_apps/device_apps.dart';
 import 'package:event/event.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:productivity_launcher/app/app.dart';
-import 'package:productivity_launcher/utils/text_sytles.dart';
-import 'package:productivity_launcher/utils/themes.dart';
+import 'package:productivity_launcher/design/blur_widget.dart';
+import 'package:productivity_launcher/design/text_sytles.dart';
+import 'package:productivity_launcher/design/themes.dart';
+import 'package:productivity_launcher/utils/app.dart';
 
 var dockEvent = Event();
 
@@ -28,10 +28,8 @@ Future<void> setDockAppsAtStart() async {
     try {
       final file = await _localFile;
       final contents = await file.readAsString();
-      log('FILE: !!! $contents');
       final appList = contents.split(',');
       for (var i = 0; i < appList.length; i++) {
-        log(appList[i]);
         final newApp = apps
             .where((element) => element.appName == appList[i])
             .toList()
@@ -39,17 +37,12 @@ Future<void> setDockAppsAtStart() async {
         dockApps.add(newApp);
         dockEvent.broadcast();
       }
-      log('Success 3');
     } catch (e) {
       final file = await _localFile;
       file.writeAsString(apps[0].appName);
       dockApps = [];
-      addDockApp(apps[0]);
       log(e.toString());
-      log('3');
     }
-  } else {
-    log('Bruhh');
   }
 }
 
@@ -60,11 +53,10 @@ void addDockApp(Application app) async {
   try {
     final file = await _localFile;
     final contents = await file.readAsString();
+    // ignore: prefer_interpolation_to_compose_strings
     file.writeAsString(contents + ',' + app.appName);
-    log('Success');
   } catch (e) {
     log(e.toString());
-    log('1');
   }
 }
 
@@ -83,10 +75,8 @@ void removeDockApp(Application app) async {
       newAppList += appList[i] + (i == appList.length - 1 ? '' : ',');
     }
     file.writeAsString(newAppList);
-    log('Success 2');
   } catch (e) {
     log(e.toString());
-    log('2');
   }
 }
 
@@ -110,27 +100,31 @@ class _DockState extends State<Dock> {
 
   @override
   Widget build(BuildContext context) {
-    return BlurryContainer(
-        width: 9999,
-        height: 90,
-        color: currentTheme.backgroundColor,
-        borderRadius: BorderRadius.circular(10),
-        child: Center(
-          child: ListView.separated(
-              scrollDirection: Axis.horizontal,
-              itemCount: dockApps.length,
-              shrinkWrap: true,
-              itemBuilder: (BuildContext context, int position) {
-                Application app = dockApps[position];
-                return sampleApp(app);
-              },
-              separatorBuilder: (context, index) => const SizedBox(width: 20)),
-        ));
+    return BlurWidget(
+      child: Container(
+          width: double.infinity,
+          height: 90,
+          decoration: BoxDecoration(
+              color: currentTheme.backgroundColor,
+              borderRadius: BorderRadius.circular(10)),
+          child: Center(
+            child: ListView.separated(
+                scrollDirection: Axis.horizontal,
+                itemCount: dockApps.length,
+                shrinkWrap: true,
+                itemBuilder: (BuildContext context, int position) {
+                  Application app = dockApps[position];
+                  return sampleApp(app);
+                },
+                separatorBuilder: (context, index) =>
+                    const SizedBox(width: 20)),
+          )),
+    );
   }
 
   Widget sampleApp(Application app) {
     return Padding(
-        padding: const EdgeInsets.symmetric(vertical: 4.5),
+        padding: const EdgeInsets.symmetric(vertical: 12),
         child: SizedBox(
             width: 65,
             child: InkWell(
