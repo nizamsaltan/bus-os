@@ -100,6 +100,7 @@ class _DockState extends State<Dock> {
   @override
   Widget build(BuildContext context) {
     return BlurWidget(
+      blurAmount: 5,
       child: Container(
           width: double.infinity,
           height: 90,

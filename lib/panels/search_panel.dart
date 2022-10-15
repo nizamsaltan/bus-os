@@ -53,44 +53,40 @@ class _SearchPanelState extends State<SearchPanel> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: const Color.fromRGBO(0, 0, 0, .3),
-      child: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
-          child: Column(
-            children: [
-              const SizedBox(height: 25),
-              CupertinoTextField(
-                controller: searchPanelSearchController,
-                focusNode: searchBarFocusNode,
-                onSubmitted: openSearchPanelApps,
-                onChanged: searchBarSearhApps,
-                //
-                padding: const EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Colors.white),
-                placeholder: 'Search',
-                placeholderStyle:
-                    standardTextStyle.copyWith(color: Colors.black38),
-                style: standardTextStyle.copyWith(color: Colors.black),
-                cursorColor: currentTheme.secondaryBackgroundColor,
-              ),
-              const SizedBox(height: 25),
-              SizedBox(
-                height: MediaQuery.of(context).size.height - 200,
-                child: ListView.separated(
-                    itemCount: searchApps.length,
-                    shrinkWrap: true,
-                    itemBuilder: (BuildContext context, int position) {
-                      return SearchPanelAppTile(app: searchApps[position]);
-                    },
-                    separatorBuilder: (context, index) =>
-                        const SizedBox(height: 10)),
-              ),
-            ],
-          ),
+    return SafeArea(
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+        child: Column(
+          children: [
+            const SizedBox(height: 25),
+            CupertinoTextField(
+              controller: searchPanelSearchController,
+              focusNode: searchBarFocusNode,
+              onSubmitted: openSearchPanelApps,
+              onChanged: searchBarSearhApps,
+              //
+              padding: const EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10), color: Colors.white),
+              placeholder: 'Search',
+              placeholderStyle:
+                  standardTextStyle.copyWith(color: Colors.black38),
+              style: standardTextStyle.copyWith(color: Colors.black),
+              cursorColor: currentTheme.secondaryBackgroundColor,
+            ),
+            const SizedBox(height: 25),
+            SizedBox(
+              height: MediaQuery.of(context).size.height - 200,
+              child: ListView.separated(
+                  itemCount: searchApps.length,
+                  shrinkWrap: true,
+                  itemBuilder: (BuildContext context, int position) {
+                    return SearchPanelAppTile(app: searchApps[position]);
+                  },
+                  separatorBuilder: (context, index) =>
+                      const SizedBox(height: 10)),
+            ),
+          ],
         ),
       ),
     );

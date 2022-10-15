@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:productivity_launcher/design/themes.dart';
 
@@ -13,8 +11,10 @@ class AppsPanel extends StatefulWidget {
 class _AppsPanelState extends State<AppsPanel> {
   @override
   Widget build(BuildContext context) {
-    return BackdropFilter(
-      filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+    return Container(
+      height: MediaQuery.of(context).size.height,
+      width: MediaQuery.of(context).size.width,
+      color: const Color.fromARGB(82, 0, 0, 0),
       child: Align(
           alignment: Alignment.bottomCenter,
           child: Padding(

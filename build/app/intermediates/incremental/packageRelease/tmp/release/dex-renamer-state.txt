@@ -1,4 +1,4 @@
-#Thu Oct 13 17:18:20 TRT 2022
+#Sat Oct 15 17:53:43 TRT 2022
 base.0=C\:\\Users\\salta\\Documents\\_Projects\\Flutter\\productivity_launcher\\build\\app\\intermediates\\dex\\release\\minifyReleaseWithR8\\classes.dex
 renamed.0=classes.dex
 path.0=classes.dex

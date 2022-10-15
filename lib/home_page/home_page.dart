@@ -1,7 +1,5 @@
 // ignore_for_file: use_key_in_widget_constructors, unused_field, prefer_is_empty, must_be_immutable
 
-import 'dart:async';
-
 import 'package:device_apps/device_apps.dart';
 import 'package:flutter/material.dart';
 import 'package:getwidget/components/loader/gf_loader.dart';
@@ -22,11 +20,13 @@ class HomePage extends StatefulWidget {
   }
 }
 
+int currentVerticalPageIndex = 0;
+bool isHandDown = false;
+
 class _HomePageState extends State<HomePage> {
-  int verticalPageIndex = 0;
-  bool gestureTimerCheck = false;
-  int verticalPageIndicator = 0;
+  double animPercantage = 0;
   late PageController _pageViewController;
+  late Offset touchPos;
 
   @override
   void initState() {
@@ -54,70 +54,78 @@ class _HomePageState extends State<HomePage> {
           apps = data.data!;
           searchApps = apps;
           setDockAppsAtStart();
-          return WillPopScope(
-            onWillPop: () async {
-              return false;
-            },
-            child: Scaffold(
-              resizeToAvoidBottomInset: false,
-              body: GestureDetector(
-                onPanUpdate: (details) {
-                  if (details.delta.dy < -20 && !gestureTimerCheck) {
-                    searchBarFocusNode.unfocus();
-                    if (verticalPageIndex > -1) {
-                      setState(() {
-                        verticalPageIndex--;
-                      });
-                    }
+          return Scaffold(
+            resizeToAvoidBottomInset: false,
+            body: GestureDetector(
+              onVerticalDragDown: (details) {
+                if (_pageViewController.page != 1) return;
 
-                    gestureTimerCheck = true;
-                    Timer(const Duration(seconds: 1), () {
-                      gestureTimerCheck = false;
-                    });
-                  } else if (details.delta.dy > 20 && !gestureTimerCheck) {
-                    if (verticalPageIndex < 1) {
-                      setState(() {
-                        verticalPageIndex++;
-                      });
-                    }
-                    if (verticalPageIndex == 1) {
+                touchPos = details.localPosition;
+              },
+              onVerticalDragUpdate: (details) {
+                if (_pageViewController.page != 1) return;
+
+                var delta = (details.localPosition - touchPos);
+                setState(() {
+                  isHandDown = true;
+                  animPercantage =
+                      delta.dy / MediaQuery.of(context).size.height * 1.5;
+                  animPercantage = animPercantage.clamp(-1, 1);
+                });
+              },
+              onVerticalDragEnd: (details) {
+                if (_pageViewController.page != 1) return;
+
+                if (animPercantage >= 0.2 && currentVerticalPageIndex < 1) {
+                  setState(() {
+                    currentVerticalPageIndex++;
+                  });
+                }
+                if (animPercantage <= -0.2 && (currentVerticalPageIndex > -1)) {
+                  setState(() {
+                    currentVerticalPageIndex--;
+                  });
+                }
+
+                setState(() {
+                  isHandDown = false;
+                  animPercantage = 0;
+                });
+              },
+              child: Stack(
+                children: [
+                  Image(
+                    image: AssetImage(currentTheme.backgroundImagePath),
+                    height: MediaQuery.of(context).size.height,
+                    width: MediaQuery.of(context).size.width,
+                    fit: BoxFit.fill,
+                  ),
+                  PageView(controller: _pageViewController, children: [
+                    const WidgetsPanel(),
+                    HomePanelAnimationWidget(
+                        verticalPageIndex: 0,
+                        axis: 0,
+                        animPercantage: animPercantage,
+                        panel: const HomePanel())
+                  ]),
+                  HomePanelAnimationWidget(
+                    verticalPageIndex: 1,
+                    axis: -1,
+                    animPercantage: animPercantage,
+                    panel: const SearchPanel(),
+                    onSelected: () {
                       searchBarFocusNode.requestFocus();
-                    }
-
-                    gestureTimerCheck = true;
-                    Timer(const Duration(seconds: 1), () {
-                      gestureTimerCheck = false;
-                    });
-                  }
-                },
-                child: Stack(
-                  children: [
-                    Image(
-                      image: AssetImage(currentTheme.backgroundImagePath),
-                      height: MediaQuery.of(context).size.height,
-                      width: MediaQuery.of(context).size.width,
-                      fit: BoxFit.fill,
-                    ),
-                    PageView(
-                      controller: _pageViewController,
-                      children: [
-                        const WidgetsPanel(),
-                        HomePanelAnimationWidget(
-                            isActive: verticalPageIndex == 0,
-                            axis: -verticalPageIndex,
-                            panel: const HomePanel()),
-                      ],
-                    ),
-                    HomePanelAnimationWidget(
-                        isActive: verticalPageIndex == 1,
-                        axis: -1,
-                        panel: const SearchPanel()),
-                    HomePanelAnimationWidget(
-                        isActive: verticalPageIndex == -1,
-                        axis: 1,
-                        panel: const AppsPanel()),
-                  ],
-                ),
+                    },
+                    onDeselected: () {
+                      searchBarFocusNode.unfocus();
+                    },
+                  ),
+                  HomePanelAnimationWidget(
+                      verticalPageIndex: -1,
+                      axis: 1,
+                      animPercantage: animPercantage,
+                      panel: const AppsPanel())
+                ],
               ),
             ),
           );
