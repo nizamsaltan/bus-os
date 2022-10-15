@@ -14,8 +14,8 @@ class CalculatorWidget extends StatefulWidget {
 }
 
 class _CalculatorWidgetState extends State<CalculatorWidget> {
-  var userInput = '';
   var answer = '';
+  var userInput = '';
   var screenText = '0';
 
   // Array of button
@@ -45,15 +45,11 @@ class _CalculatorWidgetState extends State<CalculatorWidget> {
   @override
   Widget build(BuildContext context) {
     return WidgetCell(
-      child: Column(
+      name: 'Calculator',
+      icon: FontAwesomeIcons.calculator,
+      content: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(children: [
-            Icon(FontAwesomeIcons.calculator, color: standardTextStyle.color),
-            const SizedBox(width: 10),
-            Text('Calculator', style: headerTextStyle),
-          ]),
-          const SizedBox(height: 10),
           Align(
               alignment: Alignment.centerRight,
               child: Padding(
@@ -111,8 +107,13 @@ class _CalculatorWidgetState extends State<CalculatorWidget> {
             return CalculatorButton(
               onPressed: () {
                 setState(() {
-                  userInput = userInput.substring(0, userInput.length - 1);
-                  screenText = userInput;
+                  if (userInput.length > 1) {
+                    userInput = userInput.substring(0, userInput.length - 1);
+                    screenText = userInput;
+                  } else {
+                    userInput = '';
+                    screenText = '0';
+                  }
                 });
               },
               buttonText: buttons[index],
@@ -134,10 +135,28 @@ class _CalculatorWidgetState extends State<CalculatorWidget> {
           else {
             return CalculatorButton(
               onPressed: () {
-                setState(() {
-                  userInput += buttons[index];
-                  screenText = userInput;
-                });
+                if (isCalcButton(buttons[index])) {
+                  if (userInput.isNotEmpty) {
+                    if (isCalcButton(userInput[userInput.length - 1])) {
+                      setState(() {
+                        userInput =
+                            userInput.substring(0, userInput.length - 1);
+                        userInput += buttons[index];
+                        screenText = userInput;
+                      });
+                    } else {
+                      setState(() {
+                        userInput += buttons[index];
+                        screenText = userInput;
+                      });
+                    }
+                  }
+                } else {
+                  setState(() {
+                    userInput += buttons[index];
+                    screenText = userInput;
+                  });
+                }
               },
               buttonText: buttons[index],
             );
@@ -145,8 +164,22 @@ class _CalculatorWidgetState extends State<CalculatorWidget> {
         });
   }
 
+  bool isCalcButton(String key) {
+    if (key == 'x' ||
+        key == '+' ||
+        key == '-' ||
+        key == '/' ||
+        key == '.' ||
+        key == '%') {
+      return true;
+    }
+    return false;
+  }
+
   // function to calculate the input operation
   void equalPressed() {
+    if (userInput.isEmpty) return;
+
     String finaluserinput = userInput;
     finaluserinput = userInput.replaceAll('x', '*');
 
@@ -155,6 +188,7 @@ class _CalculatorWidgetState extends State<CalculatorWidget> {
     ContextModel cm = ContextModel();
     double eval = exp.evaluate(EvaluationType.REAL, cm);
     answer = eval.toString();
+    userInput = answer;
     screenText = answer;
   }
 }

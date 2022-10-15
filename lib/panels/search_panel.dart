@@ -54,12 +54,10 @@ class _SearchPanelState extends State<SearchPanel> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height,
-      color: currentTheme.backgroundColor,
+      color: const Color.fromRGBO(0, 0, 0, .3),
       child: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
+          padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
           child: Column(
             children: [
               const SizedBox(height: 25),
@@ -81,7 +79,7 @@ class _SearchPanelState extends State<SearchPanel> {
               ),
               const SizedBox(height: 25),
               SizedBox(
-                height: MediaQuery.of(context).size.height - 50 - 83,
+                height: MediaQuery.of(context).size.height - 200,
                 child: ListView.separated(
                     itemCount: searchApps.length,
                     shrinkWrap: true,

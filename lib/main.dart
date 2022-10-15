@@ -1,16 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:productivity_launcher/design/themes.dart';
-import 'package:productivity_launcher/panels/home.dart';
+import 'package:productivity_launcher/home_page/home_page.dart';
+import 'package:translator/translator.dart';
 
-void main() {
+late GoogleTranslator translator;
+// var translation = await translator.translate("Dart is very cool!", to: 'pl');
+
+void main() async {
   setTheme(defaultTheme);
+
+  translator = GoogleTranslator();
+
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     statusBarColor: Colors.transparent, // transparent status bar
     systemNavigationBarColor: Colors.black,
     systemNavigationBarDividerColor: Colors.transparent,
   ));
+
   WidgetsFlutterBinding.ensureInitialized();
+
   runApp(const MyApp());
 }
 

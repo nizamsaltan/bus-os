@@ -6,10 +6,12 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:productivity_launcher/design/blur_widget.dart';
 import 'package:productivity_launcher/design/text_sytles.dart';
 import 'package:productivity_launcher/widgets/calculator_widget.dart';
+import 'package:productivity_launcher/widgets/translator_widget.dart';
 
 class WidgetsPanel extends StatelessWidget {
   const WidgetsPanel({Key? key}) : super(key: key);
 
+  final spacer = const SizedBox(height: 15);
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -17,10 +19,12 @@ class WidgetsPanel extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(
           children: [
-            const SizedBox(height: 15),
+            spacer,
             _weatherWidget(),
-            const SizedBox(height: 15),
+            spacer,
             const CalculatorWidget(),
+            spacer,
+            const TranslatorWidget(),
           ],
         ),
       ),
@@ -29,17 +33,11 @@ class WidgetsPanel extends StatelessWidget {
 
   Widget _weatherWidget() {
     return WidgetCell(
-      child: Column(
+      name: 'Weather',
+      icon: FontAwesomeIcons.temperatureHalf,
+      content: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            children: [
-              Icon(FontAwesomeIcons.temperatureHalf,
-                  color: headerTextStyle.color),
-              Text('Weather', style: headerTextStyle)
-            ],
-          ),
-          const SizedBox(height: 10),
           Text('Istanbul, Turkey',
               style: lowerTextStyle.copyWith(fontSize: 16)),
           const SizedBox(height: 5),
@@ -64,8 +62,12 @@ class WidgetsPanel extends StatelessWidget {
 }
 
 class WidgetCell extends StatelessWidget {
-  Widget child;
-  WidgetCell({Key? key, required this.child}) : super(key: key);
+  String name;
+  IconData icon;
+  Widget content;
+  WidgetCell(
+      {Key? key, required this.name, required this.icon, required this.content})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -76,7 +78,22 @@ class WidgetCell extends StatelessWidget {
             color: const Color.fromRGBO(0, 0, 0, .2),
             borderRadius: BorderRadius.circular(10)),
         padding: const EdgeInsets.all(10.0),
-        child: child,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(children: [
+              Icon(
+                icon,
+                color: standardTextStyle.color,
+                size: 22,
+              ),
+              const SizedBox(width: 10),
+              Text(name, style: headerTextStyle),
+            ]),
+            const SizedBox(height: 10),
+            content,
+          ],
+        ),
       ),
     );
   }

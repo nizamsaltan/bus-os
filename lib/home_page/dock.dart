@@ -8,7 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:productivity_launcher/design/blur_widget.dart';
 import 'package:productivity_launcher/design/text_sytles.dart';
-import 'package:productivity_launcher/design/themes.dart';
 import 'package:productivity_launcher/utils/app.dart';
 
 var dockEvent = Event();
@@ -105,7 +104,7 @@ class _DockState extends State<Dock> {
           width: double.infinity,
           height: 90,
           decoration: BoxDecoration(
-              color: currentTheme.backgroundColor,
+              color: const Color.fromRGBO(0, 0, 0, .2),
               borderRadius: BorderRadius.circular(10)),
           child: Center(
             child: ListView.separated(
@@ -117,19 +116,18 @@ class _DockState extends State<Dock> {
                   return sampleApp(app);
                 },
                 separatorBuilder: (context, index) =>
-                    const SizedBox(width: 20)),
+                    const SizedBox(width: 25)),
           )),
     );
   }
 
   Widget sampleApp(Application app) {
     return Padding(
-        padding: const EdgeInsets.symmetric(vertical: 12),
+        padding: const EdgeInsets.symmetric(vertical: 17),
         child: SizedBox(
-            width: 65,
+            width: 55,
             child: InkWell(
                 onTap: () {
-                  log('message');
                   app.openApp();
                 },
                 onLongPress: () {
