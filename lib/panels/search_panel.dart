@@ -75,8 +75,7 @@ class _SearchPanelState extends State<SearchPanel> {
               cursorColor: currentTheme.secondaryBackgroundColor,
             ),
             const SizedBox(height: 25),
-            SizedBox(
-              height: MediaQuery.of(context).size.height - 200,
+            Expanded(
               child: ListView.separated(
                   itemCount: searchApps.length,
                   shrinkWrap: true,
@@ -103,7 +102,8 @@ class SearchPanelAppTile extends StatefulWidget {
 }
 
 class _SearchPanelAppTileState extends State<SearchPanelAppTile> {
-  late bool showAppDetails = false;
+  bool showAppDetails = false;
+  final animDuration = const Duration(milliseconds: 200);
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -126,7 +126,7 @@ class _SearchPanelAppTileState extends State<SearchPanelAppTile> {
         height: showAppDetails ? 185 : 53,
         decoration: BoxDecoration(
             color: Colors.black45, borderRadius: BorderRadius.circular(10)),
-        duration: const Duration(milliseconds: 250),
+        duration: animDuration,
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
@@ -140,53 +140,64 @@ class _SearchPanelAppTileState extends State<SearchPanelAppTile> {
                       style: standardTextStyle.copyWith(fontSize: 17)),
                 ],
               ),
-              if (showAppDetails)
-                Column(
-                  children: [
-                    // ! Remove App
-                    CupertinoButton(
-                        padding: EdgeInsets.zero,
-                        onPressed: () {
-                          widget.app.uninstallApp();
-                        },
-                        child: Row(
-                          children: [
-                            Icon(Icons.delete_outline_rounded,
-                                color: standardTextStyle.color),
-                            const SizedBox(width: 10),
-                            Text('Remove App', style: standardTextStyle),
-                          ],
-                        )),
-                    // ! Add Dock
-                    CupertinoButton(
-                        padding: EdgeInsets.zero,
-                        onPressed: () {
-                          addDockApp(widget.app);
-                        },
-                        child: Row(
-                          children: [
-                            Icon(Icons.add_circle_outline_rounded,
-                                color: standardTextStyle.color),
-                            const SizedBox(width: 10),
-                            Text('Add Dock', style: standardTextStyle),
-                          ],
-                        )),
-                    // ! App Settings
-                    CupertinoButton(
-                        padding: EdgeInsets.zero,
-                        onPressed: () {
-                          widget.app.openSettingsScreen();
-                        },
-                        child: Row(
-                          children: [
-                            Icon(Icons.settings,
-                                color: standardTextStyle.color),
-                            const SizedBox(width: 10),
-                            Text('App Settings', style: standardTextStyle),
-                          ],
-                        ))
-                  ],
+              Expanded(
+                child: AnimatedOpacity(
+                  duration: animDuration,
+                  opacity: showAppDetails ? 1 : 0,
+                  child: Column(
+                    children: [
+                      // ! Remove App
+                      Expanded(
+                        child: CupertinoButton(
+                            padding: EdgeInsets.zero,
+                            onPressed: () {
+                              widget.app.uninstallApp();
+                            },
+                            child: Row(
+                              children: [
+                                Icon(Icons.delete_outline_rounded,
+                                    color: standardTextStyle.color),
+                                const SizedBox(width: 10),
+                                Text('Remove App', style: standardTextStyle),
+                              ],
+                            )),
+                      ),
+                      // ! Add Dock
+                      Expanded(
+                        child: CupertinoButton(
+                            padding: EdgeInsets.zero,
+                            onPressed: () {
+                              addDockApp(widget.app);
+                            },
+                            child: Row(
+                              children: [
+                                Icon(Icons.add_circle_outline_rounded,
+                                    color: standardTextStyle.color),
+                                const SizedBox(width: 10),
+                                Text('Add Dock', style: standardTextStyle),
+                              ],
+                            )),
+                      ),
+                      // ! App Settings
+                      Expanded(
+                        child: CupertinoButton(
+                            padding: EdgeInsets.zero,
+                            onPressed: () {
+                              widget.app.openSettingsScreen();
+                            },
+                            child: Row(
+                              children: [
+                                Icon(Icons.settings,
+                                    color: standardTextStyle.color),
+                                const SizedBox(width: 10),
+                                Text('App Settings', style: standardTextStyle),
+                              ],
+                            )),
+                      )
+                    ],
+                  ),
                 ),
+              ),
             ],
           ),
         ),

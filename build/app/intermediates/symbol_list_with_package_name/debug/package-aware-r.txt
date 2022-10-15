@@ -1,4 +1,4 @@
-com.example.productivity_launcher
+com.nizam.bus_os
 attr activityAction
 attr activityName
 attr alpha

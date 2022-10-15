@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/productivity_launcher.iml" filepath="$PROJECT_DIR$/.idea/productivity_launcher.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bus_os.iml" filepath="$PROJECT_DIR$/bus_os.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android/bus_os_android.iml" filepath="$PROJECT_DIR$/android/bus_os_android.iml" />
     </modules>
   </component>
 </project>

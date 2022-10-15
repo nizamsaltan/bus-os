@@ -1,7 +1,10 @@
 // ignore_for_file: must_be_immutable
 
+import 'package:event/event.dart';
 import 'package:flutter/material.dart';
 import 'package:productivity_launcher/home_page/home_page.dart';
+
+var checkHomePanelAnimationWidgetCallbacks = Event();
 
 class HomePanelAnimationWidget extends StatefulWidget {
   double animPercantage;
@@ -31,10 +34,23 @@ class _HomePanelAnimationWidgetState extends State<HomePanelAnimationWidget> {
   final int animationDuration = 300; // Miliseconds
 
   @override
-  Widget build(BuildContext context) {
+  void initState() {
+    super.initState();
+    checkHomePanelAnimationWidgetCallbacks.subscribe((args) {checkCallbacks(); });
+  }
+
+  void checkCallbacks() {
+    print('object');
     if (currentVerticalPageIndex == widget.verticalPageIndex) {
       widget.onSelected?.call();
     }
+    if (currentVerticalPageIndex != widget.verticalPageIndex) {
+      widget.onDeselected?.call();
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return AnimatedOpacity(
       duration: Duration(milliseconds: (isHandDown ? 0 : animationDuration)),
       opacity: (currentVerticalPageIndex == widget.verticalPageIndex &&

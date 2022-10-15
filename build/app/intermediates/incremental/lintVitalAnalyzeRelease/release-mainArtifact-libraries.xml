@@ -1,13 +1,13 @@
 <libraries>
   <library
-      name="__local_aars__:C:\Users\salta\Documents\_Projects\Flutter\productivity_launcher\build\app\intermediates\flutter\release\libs.jar:unspecified@jar"
-      jars="C:\Users\salta\Documents\_Projects\Flutter\productivity_launcher\build\app\intermediates\flutter\release\libs.jar"
-      resolved="__local_aars__:C:\Users\salta\Documents\_Projects\Flutter\productivity_launcher\build\app\intermediates\flutter\release\libs.jar:unspecified"/>
+      name="__local_aars__:C:\Users\salta\Documents\_Projects\Flutter\bus_os\build\app\intermediates\flutter\release\libs.jar:unspecified@jar"
+      jars="C:\Users\salta\Documents\_Projects\Flutter\bus_os\build\app\intermediates\flutter\release\libs.jar"
+      resolved="__local_aars__:C:\Users\salta\Documents\_Projects\Flutter\bus_os\build\app\intermediates\flutter\release\libs.jar:unspecified"/>
   <library
-      name="C:\Users\salta\Documents\_Projects\Flutter\productivity_launcher\android@@:path_provider_android::release"
-      jars="C:\Users\salta\Documents\_Projects\Flutter\productivity_launcher\build\path_provider_android\.transforms\f4a2c1cf9e9c074a0d06231ee3865ccc\transformed\out\jars\classes.jar"
+      name="C:\Users\salta\Documents\_Projects\Flutter\bus_os\android@@:path_provider_android::release"
+      jars="C:\Users\salta\Documents\_Projects\Flutter\bus_os\build\path_provider_android\.transforms\67929382809a482a9c56d1752b9b34dd\transformed\out\jars\classes.jar"
       resolved="io.flutter.plugins.pathprovider:path_provider_android:unspecified"
-      folder="C:\Users\salta\Documents\_Projects\Flutter\productivity_launcher\build\path_provider_android\.transforms\f4a2c1cf9e9c074a0d06231ee3865ccc\transformed\out"
+      folder="C:\Users\salta\Documents\_Projects\Flutter\bus_os\build\path_provider_android\.transforms\67929382809a482a9c56d1752b9b34dd\transformed\out"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -17,10 +17,10 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="C:\Users\salta\Documents\_Projects\Flutter\productivity_launcher\android@@:device_apps::release"
-      jars="C:\Users\salta\Documents\_Projects\Flutter\productivity_launcher\build\device_apps\.transforms\ee7fd42af5010ef85f1265d2e488f434\transformed\out\jars\classes.jar"
+      name="C:\Users\salta\Documents\_Projects\Flutter\bus_os\android@@:device_apps::release"
+      jars="C:\Users\salta\Documents\_Projects\Flutter\bus_os\build\device_apps\.transforms\086e619592c46e2d21504822334f0677\transformed\out\jars\classes.jar"
       resolved="fr.g123k.deviceapps:device_apps:unspecified"
-      folder="C:\Users\salta\Documents\_Projects\Flutter\productivity_launcher\build\device_apps\.transforms\ee7fd42af5010ef85f1265d2e488f434\transformed\out"
+      folder="C:\Users\salta\Documents\_Projects\Flutter\bus_os\build\device_apps\.transforms\086e619592c46e2d21504822334f0677\transformed\out"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
