@@ -57,84 +57,86 @@ class _HomePageState extends State<HomePage> {
           return WillPopScope(
               onWillPop: () async {
                 return false;
-              }, child: Scaffold(
-        resizeToAvoidBottomInset: false,
-        body: GestureDetector(
-        onVerticalDragDown: (details) {
-        if (_pageViewController.page != 1) return;
+              },
+              child: Scaffold(
+                resizeToAvoidBottomInset: false,
+                body: GestureDetector(
+                  onVerticalDragDown: (details) {
+                    if (_pageViewController.page != 1) return;
 
-        touchPos = details.localPosition;
-        },
-        onVerticalDragUpdate: (details) {
-        if (_pageViewController.page != 1) return;
+                    touchPos = details.localPosition;
+                  },
+                  onVerticalDragUpdate: (details) {
+                    if (_pageViewController.page != 1) return;
 
-        var delta = (details.localPosition - touchPos);
-        setState(() {
-        isHandDown = true;
-        animPercentage =
-        delta.dy / MediaQuery.of(context).size.height * 1.5;
-        animPercentage = animPercentage.clamp(-1, 1);
-        });
-        },
-        onVerticalDragEnd: (details) {
-        if (_pageViewController.page != 1) return;
+                    var delta = (details.localPosition - touchPos);
+                    setState(() {
+                      isHandDown = true;
+                      animPercentage =
+                          delta.dy / MediaQuery.of(context).size.height * 1.5;
+                      animPercentage = animPercentage.clamp(-1, 1);
+                    });
+                  },
+                  onVerticalDragEnd: (details) {
+                    if (_pageViewController.page != 1) return;
 
-        if (animPercentage >= 0.2 && currentVerticalPageIndex < 1) {
-        setState(() {
-        currentVerticalPageIndex++;
-        });
+                    if (animPercentage >= 0.2 && currentVerticalPageIndex < 1) {
+                      setState(() {
+                        currentVerticalPageIndex++;
+                      });
+                    }
+                    if (animPercentage <= -0.2 &&
+                        (currentVerticalPageIndex > -1)) {
+                      setState(() {
+                        currentVerticalPageIndex--;
+                      });
+                    }
+
+                    setState(() {
+                      isHandDown = false;
+                      animPercentage = 0;
+                    });
+
+                    checkHomePanelAnimationWidgetCallbacks.broadcast();
+                  },
+                  child: Stack(
+                    children: [
+                      Image(
+                        image: AssetImage(currentTheme.backgroundImagePath),
+                        height: MediaQuery.of(context).size.height,
+                        width: MediaQuery.of(context).size.width,
+                        fit: BoxFit.fill,
+                      ),
+                      PageView(controller: _pageViewController, children: [
+                        const WidgetsPanel(),
+                        HomePanelAnimationWidget(
+                            verticalPageIndex: 0,
+                            axis: 0,
+                            animPercantage: animPercentage,
+                            panel: const HomePanel())
+                      ]),
+                      HomePanelAnimationWidget(
+                        verticalPageIndex: 1,
+                        axis: -1,
+                        animPercantage: animPercentage,
+                        panel: const SearchPanel(),
+                        onSelected: () {
+                          searchBarFocusNode.requestFocus();
+                        },
+                        onDeselected: () {
+                          searchBarFocusNode.unfocus();
+                        },
+                      ),
+                      HomePanelAnimationWidget(
+                          verticalPageIndex: -1,
+                          axis: 1,
+                          animPercantage: animPercentage,
+                          panel: const AppsPanel())
+                    ],
+                  ),
+                ),
+              ));
         }
-        if (animPercentage <= -0.2 && (currentVerticalPageIndex > -1)) {
-        setState(() {
-        currentVerticalPageIndex--;
-        });
-        }
-
-        setState(() {
-        isHandDown = false;
-        animPercentage = 0;
-        });
-
-        checkHomePanelAnimationWidgetCallbacks.broadcast();
-        },
-        child: Stack(
-        children: [
-        Image(
-        image: AssetImage(currentTheme.backgroundImagePath),
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
-        fit: BoxFit.fill,
-        ),
-        PageView(controller: _pageViewController, children: [
-        const WidgetsPanel(),
-        HomePanelAnimationWidget(
-        verticalPageIndex: 0,
-        axis: 0,
-        animPercantage: animPercentage,
-        panel: const HomePanel())
-        ]),
-        HomePanelAnimationWidget(
-        verticalPageIndex: 1,
-        axis: -1,
-        animPercantage: animPercentage,
-        panel: const SearchPanel(),
-        onSelected: () {
-        searchBarFocusNode.requestFocus();
-        },
-        onDeselected: () {
-        searchBarFocusNode.unfocus();
-        },
-        ),
-        HomePanelAnimationWidget(
-        verticalPageIndex: -1,
-        axis: 1,
-        animPercantage: animPercentage,
-        panel: const AppsPanel())
-        ],
-        ),
-        ),
-        )
-          );}
       },
     );
   }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:productivity_launcher/design/themes.dart';
 import 'package:productivity_launcher/home_page/home_page.dart';
+import 'package:productivity_launcher/utils/app_folder.dart';
 import 'package:translator/translator.dart';
 
 late GoogleTranslator translator;
@@ -19,6 +20,7 @@ void main() async {
   ));
 
   WidgetsFlutterBinding.ensureInitialized();
+  AppFolderManager.instance.initializeFolders();
   runApp(const MyApp());
 }
 

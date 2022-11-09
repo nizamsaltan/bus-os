@@ -98,6 +98,16 @@ class _DockState extends State<Dock> {
   }
 
   @override
+  void dispose() {
+    super.dispose();
+    dockEvent.unsubscribe((args) {
+      setState(() {
+        dockApps = dockApps;
+      });
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return BlurWidget(
       blurAmount: 5,

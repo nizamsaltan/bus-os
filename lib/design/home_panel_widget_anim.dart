@@ -1,5 +1,7 @@
 // ignore_for_file: must_be_immutable
 
+import 'dart:developer';
+
 import 'package:event/event.dart';
 import 'package:flutter/material.dart';
 import 'package:productivity_launcher/home_page/home_page.dart';
@@ -36,11 +38,12 @@ class _HomePanelAnimationWidgetState extends State<HomePanelAnimationWidget> {
   @override
   void initState() {
     super.initState();
-    checkHomePanelAnimationWidgetCallbacks.subscribe((args) {checkCallbacks(); });
+    checkHomePanelAnimationWidgetCallbacks.subscribe((args) {
+      checkCallbacks();
+    });
   }
 
   void checkCallbacks() {
-    print('object');
     if (currentVerticalPageIndex == widget.verticalPageIndex) {
       widget.onSelected?.call();
     }
